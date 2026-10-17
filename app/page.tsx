@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Section } from "@/components/ui/Section";
 
 const swatches = [
   { name: "Navy", hex: "#0A1128", className: "bg-brand-navy" },
@@ -11,8 +12,8 @@ const swatches = [
 
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center gap-8 px-6 py-16 text-center">
-      <Image src="/logo.png" alt="Victor Chege logo" width={120} height={120} priority />
+    <Section className="flex flex-col items-center gap-8 text-center">
+      <Image src="/logo.png" alt="Victor Chege logo" width={120} height={120} preload />
       <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">Victor Chege</h1>
       <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary sm:text-sm">
         IT Operations and Business Systems Consultant
@@ -31,6 +32,6 @@ export default function Home() {
           </li>
         ))}
       </ul>
-    </main>
+    </Section>
   );
 }
