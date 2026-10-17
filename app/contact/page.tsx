@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = { title: "Contact" };
 
 export default function ContactPage() {
-  return (
-    <Section>
-      <SectionHeading as="h1" title="Contact" />
-    </Section>
-  );
+  return <PageHero title="Contact" />;
 }
