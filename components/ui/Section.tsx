@@ -2,13 +2,25 @@ import type { ComponentProps } from "react";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/Container";
 
+type SectionProps = ComponentProps<"section"> & {
+  tone?: "light" | "dark";
+};
+
 export function Section({
+  tone = "light",
   className,
   children,
   ...props
-}: ComponentProps<"section">) {
+}: SectionProps) {
   return (
-    <section className={cn("py-20 sm:py-28", className)} {...props}>
+    <section
+      data-tone={tone}
+      className={cn(
+        "bg-background py-20 text-foreground sm:py-28",
+        className,
+      )}
+      {...props}
+    >
       <Container>{children}</Container>
     </section>
   );
@@ -28,14 +40,14 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   return (
-    <div className={cn("flex flex-col gap-3", className)}>
+    <div className={cn("flex flex-col gap-4", className)}>
       {eyebrow ? (
-        <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-          <span aria-hidden="true" className="h-4 w-1 bg-primary" />
+        <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+          <span aria-hidden="true" className="h-4 w-1 bg-brand-cyan" />
           {eyebrow}
         </p>
       ) : null}
-      <Heading className="text-3xl font-bold tracking-tight sm:text-5xl">
+      <Heading className="text-balance text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
         {title}
       </Heading>
     </div>
