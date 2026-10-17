@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,7 +18,12 @@ import { site } from "@/lib/site";
 
 export function Header() {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
 
   useEffect(() => {
     if (!open) return;
@@ -25,8 +37,18 @@ export function Header() {
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
 
+  const solid = scrolled || open;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <header
+      data-tone="dark"
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 border-b text-foreground transition-colors duration-300",
+        solid
+          ? "border-border bg-background/95 backdrop-blur-md"
+          : "border-transparent bg-transparent",
+      )}
+    >
       <Container className="flex h-16 items-center justify-between gap-6">
         <Link
           href="/"
@@ -46,9 +68,9 @@ export function Header() {
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
               className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                "relative rounded-md px-3 py-2 text-sm font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-brand-cyan after:transition-transform after:duration-300 hover:after:scale-x-100",
                 isActive(item.href)
-                  ? "text-primary"
+                  ? "text-foreground after:scale-x-100"
                   : "text-muted hover:text-foreground",
               )}
             >
@@ -88,38 +110,48 @@ export function Header() {
         </button>
       </Container>
 
-      {open ? (
-        <div id="mobile-menu" className="border-t border-border md:hidden">
-          <Container className="flex flex-col gap-1 py-4">
-            <nav aria-label="Mobile" className="flex flex-col gap-1">
-              {site.nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    "rounded-md px-3 py-3 text-base font-medium transition-colors",
-                    isActive(item.href)
-                      ? "bg-surface text-primary"
-                      : "text-foreground hover:bg-surface",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <ButtonLink
-              href={site.cta.href}
-              size="lg"
-              className="mt-3"
-              onClick={() => setOpen(false)}
-            >
-              {site.cta.label}
-            </ButtonLink>
-          </Container>
-        </div>
-      ) : null}
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            key="mobile-menu"
+            id="mobile-menu"
+            className="border-t border-border md:hidden"
+            initial={{ opacity: 0, y: reduceMotion ? 0 : -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduceMotion ? 0 : -8 }}
+            transition={{ duration: reduceMotion ? 0 : 0.2, ease: "easeOut" }}
+          >
+            <Container className="flex flex-col gap-1 py-4">
+              <nav aria-label="Mobile" className="flex flex-col gap-1">
+                {site.nav.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "rounded-md px-3 py-3 text-base font-medium transition-colors",
+                      isActive(item.href)
+                        ? "bg-surface text-accent"
+                        : "text-foreground hover:bg-surface",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+              <ButtonLink
+                href={site.cta.href}
+                size="lg"
+                className="mt-3"
+                onClick={() => setOpen(false)}
+              >
+                {site.cta.label}
+              </ButtonLink>
+            </Container>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }
