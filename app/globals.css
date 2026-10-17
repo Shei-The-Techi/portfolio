@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* Raw brand palette: sampled from the logo and capability statement.
-   Navy-soft and navy-line are derived shades for cards and borders. */
 @theme {
   --color-brand-navy: #0a1128;
   --color-brand-navy-soft: #111b3a;
@@ -12,7 +10,6 @@
   --color-brand-mist: #f4f8fb;
 }
 
-/* Semantic tokens: dark-first, matching the logo. Components use these. */
 :root {
   --background: #0a1128;
   --foreground: #f4f8fb;
@@ -36,4 +33,24 @@
 
 html {
   color-scheme: dark;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
