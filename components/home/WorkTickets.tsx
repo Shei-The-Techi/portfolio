@@ -2,15 +2,14 @@ import Link from "next/link";
 import { LuArrowUpRight, LuCheck } from "react-icons/lu";
 import { Reveal } from "@/components/ui/Reveal";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
-import { home } from "@/lib/content";
-import { site } from "@/lib/site";
+import { caseStudies } from "@/lib/work";
 
 export function WorkTickets() {
   return (
     <div className="mt-12 grid gap-4 md:grid-cols-3">
-      {home.work.items.map((item, index) => (
-        <Reveal key={item.title} delay={index * 0.08} className="h-full">
-          <Link href={site.links.work.href} className="group block h-full">
+      {caseStudies.map((item, index) => (
+        <Reveal key={item.slug} delay={index * 0.08} className="h-full">
+          <Link href={`/work/${item.slug}`} className="group block h-full">
             <SpotlightCard interactive className="flex h-full flex-col gap-5">
               <div className="flex items-start gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent md:min-h-8">
                 <span

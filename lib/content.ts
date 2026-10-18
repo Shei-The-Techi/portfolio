@@ -5,26 +5,6 @@ export const home = {
   work: {
     eyebrow: "Proof of work",
     title: "Relevant work in real operating environments.",
-    items: [
-      {
-        title: "CK Marketing Coaching",
-        category: "IT consulting",
-        period: "March to August 2026",
-        outputs: ["Six monthly reporting cycles", "Platform comparison brief"],
-      },
-      {
-        title: "AVLC Group and BT Concepts",
-        category: "IT support and administration",
-        period: "December 2019 to August 2025",
-        outputs: ["Documented procedures", "Windows and macOS support"],
-      },
-      {
-        title: "Adapo startup MVP",
-        category: "Project coordination and front end support",
-        period: "July 2024 to September 2025",
-        outputs: ["Front end changes", "Interface testing"],
-      },
-    ],
   },
   about: {
     eyebrow: "Where I fit",
