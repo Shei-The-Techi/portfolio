@@ -89,3 +89,16 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+@theme {
+  --animate-page-in: page-in 0.3s ease-out both;
+
+  @keyframes page-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
