@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { LuCheck } from "react-icons/lu";
 
-const view = { once: true, margin: "-60px" } as const;
+const view = { once: true, margin: "0px 0px -60px 0px" } as const;
 
 export function Checklist({ items }: { items: readonly string[] }) {
   const reduce = useReducedMotion();
