@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
-import { Hero } from "@/components/home/Hero";
+import { OperatingScene } from "@/components/home/OperatingScene";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
 export default function Home() {
   return (
     <>
-      <Hero />
+      <OperatingScene />
 
       <Section tone="light">
         <Reveal>
