@@ -10,7 +10,7 @@ export default function WorkPage() {
     <>
       <PageHero title="Work" />
       <Section tone="light" className="pt-0 sm:pt-0">
-        <WorkTickets />
+        <WorkTickets headingLevel="h2" />
       </Section>
     </>
   );

@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { caseStudies } from "@/lib/work";
 
-export function WorkTickets() {
+export function WorkTickets({ headingLevel: Heading = "h3" }: { headingLevel?: "h2" | "h3" }) {
   return (
     <div className="mt-12 grid gap-4 md:grid-cols-3">
       {caseStudies.map((item, index) => (
@@ -18,9 +18,9 @@ export function WorkTickets() {
                 />
                 {item.category}
               </div>
-              <h3 className="text-xl font-semibold tracking-tight">
+              <Heading className="text-xl font-semibold tracking-tight">
                 {item.title}
-              </h3>
+              </Heading>
               <ul className="flex flex-wrap gap-2">
                 {item.outputs.map((output) => (
                   <li

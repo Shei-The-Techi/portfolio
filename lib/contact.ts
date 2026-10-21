@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+z.config({ jitless: true });
+
 const topicValues = [
   "recurring-issue",
   "system-change",

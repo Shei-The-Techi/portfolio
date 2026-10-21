@@ -84,6 +84,7 @@ export function OperatingScene() {
         !reduce && "h-[500svh]",
       )}
     >
+      <h1 className="sr-only">{site.name}</h1>
       <div className={cn("overflow-hidden", reduce ? "py-32" : "sticky top-0 h-svh")}>
         <div
           aria-hidden="true"
@@ -107,12 +108,12 @@ export function OperatingScene() {
                   <span aria-hidden="true" className="h-4 w-1 bg-brand-cyan" />
                   {site.role}
                 </p>
-                <h1
+                <p aria-hidden="true"
                   style={delay(120)}
                   className="animate-rise text-4xl font-bold leading-[1.05] tracking-tight sm:text-7xl"
                 >
                   {site.name}
-                </h1>
+                </p>
                 <p
                   style={delay(240)}
                   className="max-w-xl animate-rise text-base leading-relaxed text-muted sm:text-xl"
