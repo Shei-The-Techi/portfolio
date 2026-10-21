@@ -4,7 +4,10 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { formatDate, getPosts } from "@/lib/blog";
 
-export const metadata: Metadata = { title: "Blog" };
+export const metadata: Metadata = {
+  title: "Blog",
+  alternates: { types: { "application/rss+xml": "/blog/feed.xml" } },
+};
 
 export default async function BlogPage() {
   const posts = await getPosts();

@@ -6,6 +6,7 @@ import { CtaBand } from "@/components/home/CtaBand";
 import { PostNav } from "@/components/blog/PostNav";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { ShareLinks } from "@/components/blog/ShareLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { formatDate, getPosts } from "@/lib/blog";
@@ -25,7 +26,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = (await getPosts()).find((item) => item.slug === slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.date,
+      authors: [site.name],
+    },
+  };
 }
 
 export default async function PostPage({ params }: Props) {
@@ -40,6 +52,17 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.date,
+          url: `${siteUrl}/blog/${slug}`,
+          author: { "@type": "Person", name: site.name, url: siteUrl },
+        }}
+      />
       <ReadingProgress />
       <PageHero
         title={post.title}
