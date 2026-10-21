@@ -26,7 +26,7 @@ export function Footer() {
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
             {links.map((item) => (
               <li key={item.href}>
-                <Link
+                <Link prefetch={false}
                   href={item.href}
                   className="text-muted transition-colors hover:text-foreground"
                 >
@@ -48,7 +48,7 @@ export function Footer() {
           <ul className="flex gap-6">
             {site.legal.map((item) => (
               <li key={item.href}>
-                <Link
+                <Link prefetch={false}
                   href={item.href}
                   className="transition-colors hover:text-foreground"
                 >

@@ -52,6 +52,6 @@ export function ButtonLink({
   ...props
 }: ComponentProps<typeof Link> & StyleProps) {
   return (
-    <Link className={buttonStyles({ variant, size, className })} {...props} />
+    <Link prefetch={false} className={buttonStyles({ variant, size, className })} {...props} />
   );
 }

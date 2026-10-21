@@ -50,7 +50,7 @@ export function Header() {
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-6">
-        <Link
+        <Link prefetch={false}
           href="/"
           className="flex items-center gap-3"
           onClick={() => setOpen(false)}
@@ -63,7 +63,7 @@ export function Header() {
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
           {site.nav.map((item) => (
-            <Link
+            <Link prefetch={false}
               key={item.href}
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
@@ -124,7 +124,7 @@ export function Header() {
             <Container className="flex flex-col gap-1 py-4">
               <nav aria-label="Mobile" className="flex flex-col gap-1">
                 {site.nav.map((item) => (
-                  <Link
+                  <Link prefetch={false}
                     key={item.href}
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
