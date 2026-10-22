@@ -4,7 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { siteUrl } from "@/lib/env";
+import { isIndexable, siteUrl } from "@/lib/env";
 import { site } from "@/lib/site";
 
 const inter = Inter({
@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
   },
   twitter: { card: "summary_large_image" },
+  robots: isIndexable ? undefined : { index: false, follow: false },
 };
 
 const structuredData = {
