@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/Container";
 
 type SectionProps = ComponentProps<"section"> & {
-  tone?: "light" | "dark";
+  tone?: "light" | "dark" | "sand";
 };
 
 export function Section({

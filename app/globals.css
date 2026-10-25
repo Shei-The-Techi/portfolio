@@ -49,8 +49,8 @@
   --surface: rgb(246 247 249 / 0.05);
   --border: rgb(246 247 249 / 0.14);
   --muted: #9aa3b2;
-  --accent: #2fd7fd;
-  --primary: #2fd7fd;
+  --accent: #f5b544;
+  --primary: #f5a524;
   --primary-foreground: #0a1128;
 }
 
@@ -124,4 +124,80 @@ html {
         entry calc(40% + var(--reveal-delay, 0%));
     }
   }
+}
+
+@theme {
+  --color-brand-amber: #f5a524;
+
+  --animate-kenburns: kenburns 32s ease-in-out infinite alternate;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pop: pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-signal: signal 6s linear infinite;
+  --animate-draw: draw 0.8s ease-out both;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+
+  @keyframes kenburns {
+    from {
+      transform: scale(1.03);
+    }
+    to {
+      transform: scale(1.12) translate3d(-1.2%, -0.8%, 0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes signal {
+    to {
+      stroke-dashoffset: -440;
+    }
+  }
+
+  @keyframes draw {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgb(245 165 36 / 0.45);
+    }
+    100% {
+      box-shadow: 0 0 0 14px rgb(245 165 36 / 0);
+    }
+  }
+}
+
+[data-tone="sand"] {
+  --background: #f3eee6;
+  --foreground: #0a1128;
+  --surface: #fbf8f3;
+  --border: #e2dacd;
+  --muted: #5f6877;
+  --accent: #066a88;
+  --primary: #0a1128;
+  --primary-foreground: #f6f7f9;
 }
