@@ -1,7 +1,7 @@
 const links = {
   about: { label: "About", href: "/about" },
   work: { label: "Work", href: "/work" },
-  pricing: { label: "Pricing", href: "/pricing" },
+  services: { label: "Services", href: "/#services" },
   blog: { label: "Blog", href: "/blog" },
   contact: { label: "Contact", href: "/contact" },
 } as const;
@@ -11,7 +11,7 @@ export const site = {
   legalName: "Victor Chege",
   role: "IT Operations and Business Systems Consultant",
   links,
-  nav: [links.about, links.work, links.pricing, links.blog],
+  nav: [links.about, links.work, links.services, links.blog],
   cta: links.contact,
   socials: [
     { name: "LinkedIn", href: "https://www.linkedin.com" },
