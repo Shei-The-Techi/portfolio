@@ -25,7 +25,7 @@ export function SocialLinks() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${site.name} on ${name}`}
-              className="flex size-10 items-center justify-center rounded-full border border-border text-foreground transition duration-300 hover:-translate-y-0.5 hover:border-brand-cyan hover:text-brand-cyan"
+              className="flex size-11 items-center justify-center rounded-full border border-border text-foreground transition duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[0_12px_24px_-10px_var(--primary)]"
             >
               <Icon aria-hidden="true" className="size-[18px]" />
             </a>
